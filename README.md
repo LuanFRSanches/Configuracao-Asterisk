@@ -2,10 +2,10 @@ Instalação do Asterisk no CentOS
 
 Cenário de instalação:
 
-* CentOS 7
+* CentOS 8
 * Asterisk 16.x
 * Dahdi 3.x
-* Libpri 1.4
+* Libpri 1.x
 
 Após a instalação:
 
@@ -35,33 +35,16 @@ yum install openssl-devel ncurses-devel newt-devel libxml2-devel sqlite-devel li
 Entrando do diretório /usr/src:
  cd /usr/src/
 
-Baixando o Dahdi na versão 3:
+Baixando o Dahdi:
 
-wget downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-3.0.0+3.0.0.tar.gz
+git clone -b next git://git.asterisk.org/dahdi/linux dahdi-linux
+cd dahdi-linux
+make install
 
-Descompactando o Dahdi:
+Instalando o libpri na versão 1.x"
 
-tar zxvf dahdi-linux-complete*
+ sudo dnf install libpri-devel.x86_64
 
-Entrando no diretório do Dahdi:
-
- cd dahdi-linux-complete
-
-Instalando o Driver Dahdi:
-
- make && make install && make config
-
-Instalando o libpri na versão 1.4"
-
- cd /usr/src/
-
- wget downloads.asterisk.org/pub/telephony/libpri/libpri-1.6.0.tar.gz
-
-tar zxvf libpri*
-
- cd libpri*
-
- make && make install 
 
 Instalando o libjanssons:
 
@@ -79,10 +62,12 @@ Entrando do diretório */usr/src:
 
  cd /usr/src/
 
-Baixando a versão 16.0.1 do Asterisk
+Baixando a versão 16 do Asterisk
+dnf --enablerepo=powertools install libedit-devel
+yum install libuuid-devel
+yum install libxml2-devel
 
- wget downloads.asterisk.org/pub/telephony/asterisk/asterisk-16.1.1.tar.gz
-
+ wget downloads.asterisk.org/pub/telephony/asterisk/asterisk-16.22.0-rc1.tar.gz
 Descompactando o Asterisk:
 
 tar zxvf asterisk*  
