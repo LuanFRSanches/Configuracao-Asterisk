@@ -82,11 +82,11 @@ Compilação e instalação completa do Asterisk:
 
 Criando exemplos de Arquvios de configurações do Asterisk em /etc/asterisk como sip.conf, extensions.conf, entre todos os outros.(comando opcional):
 
-make samples && cd
+make samples
 
 Iniciando o Asterisk:
 
-#systemctl restart asterisk
+systemctl restart asterisk
 
  systemctl enable asterisk
 
